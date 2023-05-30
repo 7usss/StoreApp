@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:aa/Api.dart';
 import 'package:aa/Model/product_model.dart';
-import 'package:http/http.dart' as http;
 
 class GetAllCategoryes {
   Future<List<ProductModel>> GetAllCategoryesbyname({required String categoryes}) async {
