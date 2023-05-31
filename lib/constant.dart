@@ -1,4 +1,5 @@
 import 'package:aa/Model/product_model.dart';
+import 'package:aa/pages/update_product_page.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget_ extends StatelessWidget {
@@ -43,42 +44,51 @@ class ProductsCard extends StatelessWidget {
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
-          Container(
-            height: 150,
-            width: 160,
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 93, 92, 92),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextWidget_(
-                  text: 'Title',
-                  fontWidth: FontWeight.w500,
-                  fontColor: Colors.amberAccent,
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextWidget_(
-                      text: products.price.toString(),
-                      fontWidth: FontWeight.w400,
-                      fontColor: Colors.amber,
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.favorite,
-                          color: Colors.grey,
-                        ))
-                  ],
-                )
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return UpdateProductPage(
+                  products: products,
+                );
+              }));
+            },
+            child: Container(
+              height: 150,
+              width: 160,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 93, 92, 92),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextWidget_(
+                    text: products.title.substring(0, 6),
+                    fontWidth: FontWeight.w500,
+                    fontColor: Colors.amberAccent,
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextWidget_(
+                        text: products.price.toString(),
+                        fontWidth: FontWeight.w400,
+                        fontColor: Colors.amber,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.favorite,
+                            color: Colors.grey,
+                          ))
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Positioned(
