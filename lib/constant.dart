@@ -75,7 +75,7 @@ class ProductsCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextWidget_(
-                        text: products.price.toString(),
+                        text: "${products.price}",
                         fontWidth: FontWeight.w400,
                         fontColor: Colors.amber,
                       ),

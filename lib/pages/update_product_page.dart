@@ -73,15 +73,8 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
                       isLoading = true;
 
                       try {
-                        await UpdateProductService().updateproduct(
-                            id: widget.products.id,
-                            title: productName == null ? widget.products.title : productName!,
-                            description: description == null ? widget.products.description : description!,
-                            image: image == null ? widget.products.image : image!,
-                            price: price == null ? widget.products.price : price!,
-                            categories: widget.products.category);
-
                         print('sucsse');
+                        await updateproducts();
                       } catch (e) {
                         print(e);
                       }
@@ -93,5 +86,15 @@ class _UpdateProductPageState extends State<UpdateProductPage> {
               ),
       ),
     );
+  }
+
+  Future<ProductModel> updateproducts() {
+    return UpdateProductService().updateproduct(
+        id: widget.products.id,
+        title: productName == null ? widget.products.title : productName!,
+        description: description == null ? widget.products.description : description!,
+        image: image == null ? widget.products.image : image!,
+        price: price == null ? widget.products.price.toString() : price!,
+        categories: widget.products.category);
   }
 }

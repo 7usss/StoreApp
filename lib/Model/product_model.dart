@@ -5,7 +5,7 @@ class ProductModel {
   final dynamic price;
   final String category;
   final String image;
-  final RatingModel rate;
+  final RatingModel? rate;
 
   ProductModel(
       {required this.id,
@@ -18,16 +18,17 @@ class ProductModel {
 
   factory ProductModel.fromjason(jsondata) {
     return ProductModel(
-      id: jsondata['id'],
-      title: jsondata['title'],
-      description: jsondata['description'],
-      price: jsondata['price'],
-      image: jsondata['image'],
-      category: jsondata['category'],
-      rate: RatingModel.fromjason(
-        jsondata['rating'],
-      ),
-    );
+        id: jsondata['id'],
+        title: jsondata['title'],
+        description: jsondata['description'],
+        price: jsondata['price'],
+        image: jsondata['image'],
+        category: jsondata['category'],
+        rate: jsondata['rating'] == null
+            ? null
+            : RatingModel.fromjason(
+                jsondata['rating'],
+              ));
   }
 }
 
